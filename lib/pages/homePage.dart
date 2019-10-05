@@ -9,9 +9,8 @@ class _TextFieldExState extends State<homePage> {
   TextEditingController _ipc ;
   TextEditingController _portc;
 
-  String _ip = "Enter IP";
-  String _port = "Enter PORT" ;
-  String _text = "Enter Description";
+  String _ip = "";
+  String _port = "" ;
 
   @override
   void initState() {
@@ -30,12 +29,21 @@ class _TextFieldExState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      
+        appBar: AppBar(
+        title: Text('Home Page'),
+        backgroundColor: new Color(0xFF000000),
+      ),
       body: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left:20.0,right: 20.0),
+              padding: EdgeInsets.only(top:0,bottom: 50),
+            ),
+            Text("Enter Local Server Details :",style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold,)),
+            Padding(
+              padding: EdgeInsets.only(left:20.0,right: 20.0,top: 80),
               child :TextField(
                 decoration: InputDecoration(labelText: 'Enter IP'),
               keyboardType: TextInputType.text,
@@ -46,15 +54,17 @@ class _TextFieldExState extends State<homePage> {
               padding: EdgeInsets.only(left:20.0,right: 20.0),
               child :TextField(
                 decoration: InputDecoration(labelText: 'Enter PORT'),
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.number,
               onChanged: (v)=>setState((){_port=v;}),
               controller: _portc,
             ),),
             Padding(
-              padding: EdgeInsets.only(top:50),
+              padding: EdgeInsets.only(top:30),
             ),
             new RaisedButton(
-              child: new Text("SUBMIT"),
+              child: new Text("SUBMIT",style: TextStyle(fontSize: 20)),
+              textColor: Colors.white,
+              color: Colors.blue,
               onPressed: (){
                 Navigator.push(
           context,
@@ -68,11 +78,6 @@ class _TextFieldExState extends State<homePage> {
             Padding(
               padding: EdgeInsets.only(top:35),
             ),
-            new Text("Description entered : $_text"),
-            Padding(
-              padding: EdgeInsets.only(top:20),
-            ),
-            new Text("Command : " ),
             new Text("IP : $_ip"),
             new Text("PORT :$_port")
           ],

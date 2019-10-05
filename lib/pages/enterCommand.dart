@@ -84,7 +84,7 @@ TextFieldEx(this._ip, this._port, {Key key}): super(key: key);//add also..exampl
 class _TextFieldExState extends State<TextFieldEx> {
   TextEditingController _c ;
   Future<Post> post;
-  String output ;
+  String output="" ;
   String _text = "Enter Description";
   //static final CREATE_POST_URL = 'https://jsonplaceholder.typicode.com/posts';
   // @override
@@ -125,7 +125,6 @@ callAPI(String _text){
           output = response.body;
 
         }
-          
         else
           print(response.statusCode);
     }).catchError((error){
@@ -141,12 +140,18 @@ callAPI(String _text){
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        appBar: AppBar(
+        title: Text('Commands Page'),
+        backgroundColor: new Color(0xFF000000),
+      ),
       body: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
+            Text("Enter Command Description :",style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold)),
             Padding(
-              padding: EdgeInsets.only(left:20.0,right: 20.0),
+              padding: EdgeInsets.only(left:20.0,right: 20.0,top:70),
               child :TextField(
                 decoration: InputDecoration(labelText: 'Enter Description'),
               keyboardType: TextInputType.text,
@@ -157,15 +162,16 @@ callAPI(String _text){
               padding: EdgeInsets.only(top:50),
             ),
             new RaisedButton(
-              child: new Text("Get Command"),
+              child: new Text("Get Command",style: TextStyle(fontSize: 20)),  
+              textColor: Colors.white,
+              color: Colors.blue,    
               onPressed: () async {
                 //makeRequest();
                 //getPost(_text);
                 callAPI(_text);
                 setState((){
-                  //_metal = double.parse(_c.text);
-                  //_total = _metal+0.025;
                   _c.text = "";
+                  output=output;
                 });
               },
             ),
@@ -176,10 +182,9 @@ callAPI(String _text){
             Padding(
               padding: EdgeInsets.only(top:20),
             ),
-            new Text("Command : " ),
-            Text(widget._ip),
-            Text(widget._port)
-
+            new Text("Command : " + output,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal)),
+            //Text("IP : " + widget._ip),
+            //Text("PORT : " + widget._port),
           ],
         )
       )
