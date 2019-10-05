@@ -1,66 +1,83 @@
-import 'package:kjsce/pages/enterCommand.dart';
 import 'package:flutter/material.dart';
 import './enterCommand.dart';
 class homePage extends StatefulWidget {
-
   @override
-  _EditProductScreenState createState() => _EditProductScreenState();
+  _TextFieldExState createState() => new _TextFieldExState();
 }
 
-class _EditProductScreenState extends State<homePage> {
-  final _priceFocusNode = FocusNode();
+class _TextFieldExState extends State<homePage> {
+  TextEditingController _ipc ;
+  TextEditingController _portc;
+
+  String _ip = "Enter IP";
+  String _port = "Enter PORT" ;
+  String _text = "Enter Description";
+
+  @override
+  void initState() {
+      _ipc = new TextEditingController();
+      _portc = new TextEditingController();
+      super.initState();
+    }
+
+  @override
+  void dispose(){
+   _ipc?.dispose();
+   _portc?.dispose();
+   super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/background.jpg"), fit: BoxFit.cover)),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        title: Text('CMD'),
-        backgroundColor: new Color(0xFF000000),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 50,top: 30.0,left: 15,right: 15),
-        child: Form(
-          child: ListView(
-            children: <Widget>[
+    return new Scaffold(
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left:20.0,right: 20.0),
+              child :TextField(
+                decoration: InputDecoration(labelText: 'Enter IP'),
+              keyboardType: TextInputType.text,
+              onChanged: (v)=>setState((){_ip=v;}),
+              controller: _ipc,
+            ),),
               Padding(
-              padding: EdgeInsets.only(bottom:20.0),
-              child :Text(
-                'Enter Local system details',
-                 style: TextStyle(fontSize: 30.0),
-              ),),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'IP address'),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_priceFocusNode);
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Port'),
-                textInputAction: TextInputAction.next,
-                keyboardType: TextInputType.number,
-                focusNode: _priceFocusNode,
-              ),
-              RaisedButton(
-  onPressed: () {
- Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => enterCommand()),
-  );
-  },
-  child: Text('Submit'),
-),
-            ],
-          ),
-        ),
-      ),
-    ),),);
+              padding: EdgeInsets.only(left:20.0,right: 20.0),
+              child :TextField(
+                decoration: InputDecoration(labelText: 'Enter PORT'),
+              keyboardType: TextInputType.text,
+              onChanged: (v)=>setState((){_port=v;}),
+              controller: _portc,
+            ),),
+            Padding(
+              padding: EdgeInsets.only(top:50),
+            ),
+            new RaisedButton(
+              child: new Text("SUBMIT"),
+              onPressed: (){
+                Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => TextFieldEx(_ip, _port)));
+                setState((){
+                  _portc.text = "";
+                });
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.only(top:35),
+            ),
+            new Text("Description entered : $_text"),
+            Padding(
+              padding: EdgeInsets.only(top:20),
+            ),
+            new Text("Command : " ),
+            new Text("IP : $_ip"),
+            new Text("PORT :$_port")
+          ],
+        )
+      )
+    );
   }
 }

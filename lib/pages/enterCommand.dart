@@ -1,63 +1,75 @@
 import 'package:flutter/material.dart';
-class enterCommand extends StatefulWidget {
 
+class TextFieldEx extends StatefulWidget {
   @override
-  _EditProductScreenState createState() => _EditProductScreenState();
+  //String ip ="";
+  //String port ="";
+  final String _ip;
+  final String _port;
+TextFieldEx(this._ip, this._port, {Key key}): super(key: key);//add also..example this.abc,this...
+@override
+  State<StatefulWidget> createState() => _TextFieldExState();
+  //_TextFieldExState createState() => new _TextFieldExState();
 }
 
-class _EditProductScreenState extends State<enterCommand> {
-   // TextEditingController descController = TextEditingController();
-  final _priceFocusNode = FocusNode();
- // String desc="";
+class _TextFieldExState extends State<TextFieldEx> {
+  TextEditingController _c ;
+
+  String _text = "Enter Description";
+  @override
+  void initState() {
+      _c = new TextEditingController();
+      super.initState();
+    }
+
+  @override
+  void dispose(){
+   _c?.dispose();
+   super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/background.jpg"), fit: BoxFit.cover)),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        title: Text('CMD'),
-        backgroundColor: new Color(0xFF000000),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 50,top: 30.0,left: 15,right: 15),
-        child: Form(
-          child: ListView(
-            children: <Widget>[
-              Padding(
-              padding: EdgeInsets.only(bottom:40.0),
-              child :Text(
-                'Enter Command Details',
-                 style: TextStyle(fontSize: 30.0),
-              ),),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Command description'),
-                //controller: descController,
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-                onFieldSubmitted: (_) {
-                  FocusScope.of(context).requestFocus(_priceFocusNode);
-                },
-              ),
-              Padding(    
-              padding: EdgeInsets.only(top:10.0),
-              child :RaisedButton(
-                onPressed: () {
-                    //desc=descController.text;
-                },
-                child: Text('Get Command'),
-              ),),
-            ],
-          ),
-        ),
-      
-      ),
-    ),
-    ),
-  );
-    
+    return new Scaffold(
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left:20.0,right: 20.0),
+              child :TextField(
+                decoration: InputDecoration(labelText: 'Enter Description'),
+              keyboardType: TextInputType.text,
+              onChanged: (v)=>setState((){_text=v;}),
+              controller: _c,
+            ),),
+            Padding(
+              padding: EdgeInsets.only(top:50),
+            ),
+            new RaisedButton(
+              child: new Text("Get Command"),
+              onPressed: (){
+                setState((){
+                  //_metal = double.parse(_c.text);
+                  //_total = _metal+0.025;
+                  _c.text = "";
+                });
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.only(top:35),
+            ),
+            new Text("Description entered : $_text"),
+            Padding(
+              padding: EdgeInsets.only(top:20),
+            ),
+            new Text("Command : " ),
+            Text(widget._ip),
+            Text(widget._port)
+
+          ],
+        )
+      )
+    );
   }
 }
