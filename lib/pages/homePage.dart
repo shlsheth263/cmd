@@ -34,16 +34,16 @@ class _TextFieldExState extends State<homePage> {
         title: Text('Home Page'),
         backgroundColor: new Color(0xFF000000),
       ),
-      body: new Center(
+      body: new Container(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top:0,bottom: 50),
+              padding: EdgeInsets.only(top:0,bottom: 10),
             ),
             Text("Enter Local Server Details :",style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold,)),
             Padding(
-              padding: EdgeInsets.only(left:20.0,right: 20.0,top: 80),
+              padding: EdgeInsets.only(left:20.0,right: 10.0,top: 10),
               child :TextField(
                 decoration: InputDecoration(labelText: 'Enter IP'),
               keyboardType: TextInputType.text,
@@ -76,7 +76,7 @@ class _TextFieldExState extends State<homePage> {
               },
             ),
             Padding(
-              padding: EdgeInsets.only(top:35),
+              padding: EdgeInsets.only(top:10),
             ),
             new Text("IP : $_ip"),
             new Text("PORT :$_port")
