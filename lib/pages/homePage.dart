@@ -78,8 +78,6 @@ class _TextFieldExState extends State<homePage> {
             Padding(
               padding: EdgeInsets.only(top:10),
             ),
-            new Text("IP : $_ip"),
-            new Text("PORT :$_port")
           ],
         )
       )

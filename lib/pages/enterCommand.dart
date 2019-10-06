@@ -246,13 +246,18 @@ callAPI(String _text){
                 Padding(
                   padding: EdgeInsets.only(top:10),
                 ),
-                new Text("Description entered : $_text"),
+                new Text("Description entered : $_text",style: TextStyle(fontSize: 20)),
                 Padding(
                   padding: EdgeInsets.only(top:20),
                 ),
-                new Text("Command : " + output,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal)),
-                new Text("Output :" + send_to_api1,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal) ),
-
+                new Text("Predicted Command : " + send_to_api1,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal) ),
+               Padding(
+                  padding: EdgeInsets.only(top:20,left:10),
+                ),
+                Padding(
+                  padding : EdgeInsets.only(left :20,right:10),
+                child :new  Text("Terminal Output of Given Command: " + output1,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal) ),
+                ),
               Padding(
                   padding: EdgeInsets.only(top:30),
                 ),
