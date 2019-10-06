@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+import './terminal.dart';
 
 class Post {
   final String eng;
@@ -211,7 +211,7 @@ callAPI(String _text){
             title: Text('Commands Page'),
             backgroundColor: new Color(0xFF000000),
           ),
-          body: new Center(
+          body: new Container(
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -251,7 +251,25 @@ callAPI(String _text){
                   padding: EdgeInsets.only(top:20),
                 ),
                 new Text("Command : " + output,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal)),
-                new Text("Output " + send_to_api1 )
+                new Text("Output " + send_to_api1 ),
+
+              Padding(
+                  padding: EdgeInsets.only(top:30),
+                ),
+
+              FloatingActionButton(
+              elevation: 0.0,
+              child: new Icon(Icons.comment),
+              backgroundColor: new Color(0xFF000000),
+              onPressed: (){
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+              builder: (context) => terminal()));
+              }
+            ),
+            
+            
             //Text("IP : " + widget._ip),
             //Text("PORT : " + widget._port),
           ],
