@@ -206,7 +206,7 @@ callAPI(String _text){
 
   @override
   Widget build(BuildContext context) {
-        return new Scaffold(
+        return new Scaffold( 
             appBar: AppBar(
             title: Text('Commands Page'),
             backgroundColor: new Color(0xFF000000),
@@ -251,7 +251,7 @@ callAPI(String _text){
                   padding: EdgeInsets.only(top:20),
                 ),
                 new Text("Command : " + output,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal)),
-                new Text("Output " + send_to_api1 ),
+                new Text("Output :" + send_to_api1,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal) ),
 
               Padding(
                   padding: EdgeInsets.only(top:30),
