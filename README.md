@@ -1,6 +1,5 @@
-# kjsce
+Flutter app to convert english text to Linux commands and use a local computeres temrminal on our app.
 
-A new Flutter project.
 
 ## Getting Started
 
