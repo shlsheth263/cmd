@@ -188,7 +188,7 @@ callAPI(String _text){
         {
           print(response.body);
           output1 = response.body;
-//          Map<String, dynamic> user = jsonDecode(output);
+  //          Map<String, dynamic> user = jsonDecode(output);
   //        name = user['cmd'];
         }
         else
@@ -218,7 +218,7 @@ callAPI(String _text){
     
                 Text("Enter Command Description :",style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold)),
                 Padding(
-                  padding: EdgeInsets.only(left:20.0,right: 20.0,top:20),
+                  padding: EdgeInsets.only(left:20.0,right: 20.0,top:10),
                   child :TextField(
                     decoration: InputDecoration(labelText: 'Enter Description'),
                   keyboardType: TextInputType.text,
@@ -226,7 +226,7 @@ callAPI(String _text){
                   controller: _c,
                 ),),
                 Padding(
-                  padding: EdgeInsets.only(top:50),
+                  padding: EdgeInsets.only(top:30),
                 ),
                 new RaisedButton(
                   child: new Text("Get Command",style: TextStyle(fontSize: 20)),  
@@ -243,23 +243,17 @@ callAPI(String _text){
                     });
                   },
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top:10),
-                ),
-                new Text("Description entered : $_text",style: TextStyle(fontSize: 20)),
-                Padding(
-                  padding: EdgeInsets.only(top:20),
-                ),
+    
                 new Text("Predicted Command : " + send_to_api1,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal) ),
                Padding(
-                  padding: EdgeInsets.only(top:20,left:10),
+                  padding: EdgeInsets.only(top:10,left:10),
                 ),
                 Padding(
                   padding : EdgeInsets.only(left :20,right:10),
                 child :new  Text("Terminal Output of Given Command: " + output1,style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.normal) ),
                 ),
               Padding(
-                  padding: EdgeInsets.only(top:30),
+                  padding: EdgeInsets.only(top:0),
                 ),
 
               FloatingActionButton(
