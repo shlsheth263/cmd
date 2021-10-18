@@ -14,3 +14,5 @@ Please follow these steps to get the project running.
 3. Go to frontend directory and then execute following commandin new terminal :
 
     a. flutter run
+    
+4. This will start the project
