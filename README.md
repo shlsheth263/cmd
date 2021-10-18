@@ -5,6 +5,8 @@ Access any local computer’s terminal from our phone app created using flutter.
 
 Download this https://dl.fbaipublicfiles.com/fasttext/vectors-english/wiki-news-300d-1M.vec.zip file and place in the Backend/data directory, then navigate back to engtocmd and in a terminal execute the following commands :
 
+Please follow these steps to get the project running.
+
 1. export FLASK_APP=app.py
 
 2. flask run
